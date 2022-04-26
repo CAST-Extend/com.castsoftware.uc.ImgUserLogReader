@@ -1,0 +1,2 @@
+20220425183437: Connection Open
+20220425183437: Connection Closed

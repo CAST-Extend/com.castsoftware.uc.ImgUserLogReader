@@ -1,0 +1,2 @@
+20220103173315: Connection Open
+20220103173315: Connection Closed

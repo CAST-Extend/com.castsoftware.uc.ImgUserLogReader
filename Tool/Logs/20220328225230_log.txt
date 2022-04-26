@@ -1,0 +1,4 @@
+Value of '130' is not valid for 'Value'. 'Value' should be between 'minimum' and 'maximum'.
+Parameter name: Value
+20220328225230: Connection Open
+20220328225230: Connection Closed

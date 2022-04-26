@@ -1,0 +1,4 @@
+Value of '0' is not valid for 'Value'. 'Value' should be between 'minimum' and 'maximum'.
+Parameter name: Value
+20220425123414: Connection Open
+20220425123414: Connection Closed

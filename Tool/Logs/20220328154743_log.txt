@@ -1,0 +1,2 @@
+20220328154743: Connection Open
+20220328154743: Connection Closed

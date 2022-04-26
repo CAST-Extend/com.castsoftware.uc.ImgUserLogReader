@@ -1,0 +1,2 @@
+20220103202731: Connection Open
+20220103202731: Connection Closed

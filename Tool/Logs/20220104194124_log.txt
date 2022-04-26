@@ -1,0 +1,2 @@
+20220104194124: Connection Open
+20220104194124: Connection Closed

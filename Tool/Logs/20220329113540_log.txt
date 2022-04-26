@@ -1,0 +1,2 @@
+20220329113540: Connection Open
+20220329113540: Connection Closed
