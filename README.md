@@ -1,4 +1,4 @@
-# com.castsoftware.uc.ImgUserLogReader
+# com.castsoftware.uc.imguserlogreader
 
 ### 	**This extension is used for**
 *   Tracking users activity in Cast Imaging
