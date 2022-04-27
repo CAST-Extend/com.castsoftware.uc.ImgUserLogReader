@@ -18,7 +18,7 @@
 ###     **TODO**
 * 	Run ImgReader.exe from the tool
 * 	Provide database server details [refer - wiki]
-* 	Browse audit-trail log file in select option
+* 	Browse audit-trail log in select file option
 * 	Click Process Data and Generate Report
 
 
