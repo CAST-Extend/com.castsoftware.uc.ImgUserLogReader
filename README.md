@@ -1,5 +1,4 @@
 # com.castsoftware.uc.ImgUserLogReader
-## Welcome to the com.castsoftware.uc.ImgUserLogReader wiki!
 
 ### 	**OVERVIEW**
 * 	The ImgUserLogReader is the custom-built utility to track user activity in Cast Imaging, admins are not part of it 
