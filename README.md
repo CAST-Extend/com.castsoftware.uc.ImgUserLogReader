@@ -99,7 +99,7 @@ Attributes - DataTime, IP, HttpStatus, HttpMethod, URL, UserEmail, Role, Id, Bro
 
 ### **REPORT EXPORT**
 * Reports are available in CSV format in the '_Results_' folder
-* This is generated as part of ‘_Process Data_’ step explained in [previous](https://github.com/CAST-Extend/com.castsoftware.uc.ImgUserLogReader/wiki/_new#process-data) section.
+* This is generated as part of ‘_Process Data_’ step explained in previous section.
 
 
 
