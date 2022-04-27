@@ -1,8 +1,9 @@
 # com.castsoftware.uc.ImgUserLogReader
 
 ### 	**This extension is used for**
-* 	Reading user data from audit-trail log of Cast Imaging
-* 	Data of applications accessed on Cast Imaging by the users
+*   Tracking users activity in Cast Imaging
+*   Get insights on application team’s engagement on Cast Imaging
+* 	Applications accessed on Cast Imaging by the users
 * 	Users login data
 
 ***
