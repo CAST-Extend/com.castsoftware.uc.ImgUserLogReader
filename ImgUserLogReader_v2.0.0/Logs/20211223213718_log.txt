@@ -1,0 +1,2 @@
+20211223213717: Connection Open
+20211223213718: Connection Closed

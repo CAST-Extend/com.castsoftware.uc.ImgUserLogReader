@@ -1,0 +1,2 @@
+20220320200609: Connection Open
+20220320200610: Connection Closed

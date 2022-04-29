@@ -1,0 +1,2 @@
+20220103131414: Connection Open
+20220103131414: Connection Closed

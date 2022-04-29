@@ -1,0 +1,22 @@
+******************************* Release Notes *************************************
+Version 2.0.0
+April 27, 2022
+***********************************************************************************
+Features:
+
+ - Reads user data only from audit-trail log of Cast Imaging
+ - Process Data into CSV file and stores results in the database server
+ - Generates graphical view as HTML page from the output
+ - Can view unique and overall access of the applications on Cast Imaging by the users
+ - Login Data for all the users
+
+Compatibility:
+
+ - Compatible with .Net Framework 4.0 and above with IIS Web Server
+
+Bug fixed:
+
+ - Updated application data generation issue faced in previous version
+ - Application data is generated and stored in database without any blockers
+
+************************************************************************************

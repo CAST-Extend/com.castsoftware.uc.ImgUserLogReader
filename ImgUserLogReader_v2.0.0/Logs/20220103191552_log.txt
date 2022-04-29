@@ -1,0 +1,2 @@
+20220103191552: Connection Open
+20220103191552: Connection Closed

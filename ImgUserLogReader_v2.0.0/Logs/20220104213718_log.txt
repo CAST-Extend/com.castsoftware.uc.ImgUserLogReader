@@ -1,0 +1,2 @@
+20220104213717: Connection Open
+20220104213717: Connection Closed
