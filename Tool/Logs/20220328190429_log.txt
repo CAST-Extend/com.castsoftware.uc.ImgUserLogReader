@@ -1,3 +1,0 @@
-The process cannot access the file 'C:\Users\JKM\Documents\Cast_Software\MMC\ImgReaderTest2\ImageReader\ImgReader\ImgReader\ImgReader\bin\Debug\Results\appdata.csv' because it is being used by another process.
-20220328190428: Connection Open with Command Timeout:300
-20220328190429: Writing data to CSV

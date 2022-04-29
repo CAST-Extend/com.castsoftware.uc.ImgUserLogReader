@@ -1,2 +1,0 @@
-20211223202657: Connection Open
-20211223202657: Connection Closed

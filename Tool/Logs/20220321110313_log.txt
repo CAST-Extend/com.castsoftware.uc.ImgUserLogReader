@@ -1,2 +1,0 @@
-20220321110313: Connection Open
-20220321110313: Connection Closed

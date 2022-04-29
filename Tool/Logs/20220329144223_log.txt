@@ -1,2 +1,0 @@
-42601: syntax error at or near "'sangita.pradhan@mmc.com'"
-20220329144223: Connection Open

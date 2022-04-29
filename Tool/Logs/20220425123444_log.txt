@@ -1,4 +1,0 @@
-Value of '0' is not valid for 'Value'. 'Value' should be between 'minimum' and 'maximum'.
-Parameter name: Value
-20220425123444: Connection Open
-20220425123444: Connection Closed

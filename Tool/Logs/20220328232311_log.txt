@@ -1,4 +1,0 @@
-Value of '101' is not valid for 'Value'. 'Value' should be between 'minimum' and 'maximum'.
-Parameter name: Value
-20220328232311: Connection Open
-20220328232311: Connection Closed
