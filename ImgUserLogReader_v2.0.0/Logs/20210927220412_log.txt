@@ -1,2 +1,0 @@
-Exception while connecting
-20210927220401: Connection Open with Command Timeout:300
