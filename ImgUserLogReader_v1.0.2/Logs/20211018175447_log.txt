@@ -1,0 +1,3 @@
+String was not recognized as a valid DateTime.
+20211018175445: Connection Open
+20211018175447: Connection Closed

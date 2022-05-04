@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>com.castsoftware.uc.imguserlogreader</id>
+    <version>1.0.2</version>
+    <title>Cast Imaging User Log Reader</title>
+    <authors>CAST User Community</authors>
+    <owners>CAST</owners>
+    <licenseUrl>https://extend.castsoftware.com/V2/Licenses/Cast-Licence-UserCommunity-1.0.html</licenseUrl>
+    <projectUrl>https://github.com/CAST-Extend/com.castsoftware.uc.ImgUserLogReader</projectUrl>
+	<icon>https://raw.githubusercontent.com/CAST-Extend/com.castsoftware.uc.imguserlogreader/master/icon.png</icon>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>This extension tracks user activity in Cast Imaging. This extension used to get insights on application team’s engagement on Cast Imaging, Application Usage - Overall, Login data in csv and graphical view. Audit-trail log of Cast Imaging is used as the input. DotNet framework 4.0 and above with IIS web server is compatible to run the tool.</description>
+    <releaseNotes>https://github.com/CAST-Extend/com.castsoftware.uc.imguserlogreader/releases</releaseNotes>
+    <tags>Cast Imaging User Log Reader 1.0.2</tags>
+    <dependencies>
+      <dependency id="CAIP" version="8.0.0" />
+    </dependencies>
+  </metadata>
+</package>

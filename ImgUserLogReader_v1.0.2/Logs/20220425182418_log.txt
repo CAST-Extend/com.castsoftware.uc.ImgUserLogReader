@@ -1,0 +1,2 @@
+20220425182418: Connection Open
+20220425182418: Connection Closed

@@ -1,0 +1,3 @@
+20220103180537: Connection Open with Command Timeout:300
+20220103180539: Writing data to CSV
+20220103180539: Processing Successful
