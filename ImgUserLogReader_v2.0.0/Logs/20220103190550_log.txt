@@ -1,0 +1,2 @@
+20220103190550: Connection Open
+20220103190550: Connection Closed

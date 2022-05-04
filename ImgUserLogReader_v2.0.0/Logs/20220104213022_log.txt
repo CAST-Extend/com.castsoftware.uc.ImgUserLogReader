@@ -1,0 +1,2 @@
+20220104213022: Connection Open
+20220104213022: Connection Closed

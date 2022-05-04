@@ -1,0 +1,2 @@
+20220321084253: Connection Open
+20220321084253: Connection Closed

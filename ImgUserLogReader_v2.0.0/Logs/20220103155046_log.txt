@@ -1,0 +1,2 @@
+20220103155046: Connection Open
+20220103155046: Connection Closed

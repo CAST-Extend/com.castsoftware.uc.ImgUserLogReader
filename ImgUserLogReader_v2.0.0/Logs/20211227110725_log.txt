@@ -1,0 +1,2 @@
+20211227110724: Connection Open
+20211227110725: Connection Closed

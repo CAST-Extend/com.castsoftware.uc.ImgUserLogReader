@@ -1,0 +1,2 @@
+20220103165135: Connection Open
+20220103165135: Connection Closed
