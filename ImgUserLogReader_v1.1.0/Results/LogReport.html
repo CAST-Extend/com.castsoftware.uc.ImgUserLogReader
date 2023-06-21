@@ -1,0 +1,250 @@
+<!DOCTYPE html><html lang="en"><head><title>Imaging Data</title><meta charset="utf-8"><meta name = "viewport" content = "width=device-width, initial-scale=1"><link rel = "stylesheet" href = "../Content/jquery-ui.min.css"><link rel = "stylesheet" href = "../Content/bootstrap.min.css"><link rel = "stylesheet" href = "../Content/example.css"><link rel = "stylesheet" href = "../Content/pie_style.css"><link rel = "stylesheet" href = "../Content/jquery.dataTables.min.css"><style id='compiled-css' type='text/css'> .table>thead:first-child>tr:first-child>th { background-color: #AAAAAA !important; } .table-bordered { border : none !important} .table>thead th:first-child { border-top-left-radius : 18px; } 
+                        .red { background-color: #dc3545 !important; color: white;} .ui-widget-header { background: #AAAAAA !important } .ui-widget.ui-widget-content, .ui-widget-content { border : none !important;}.legend{visibility:hidden;}</style> <script src = "../Scripts/jquery.min.js"></script><script src = "../Scripts/jquery-ui.min.js"></script><script src = "../Scripts/bootstrap.min.js"></script><script src = "../Scripts/jquery.flot.min.js"></script><script src = "../Scripts/jquery.flot.time.js"></script><script src = "../Scripts/jshashtable-2.1.js"></script><script src = "../Scripts/jquery.numberformatter-1.2.3.min.js"></script><script src = "../Scripts/jquery.flot.symbol.js"></script><script src = "../Scripts/jquery.flot.axislabels.js"></script><script src = "../Scripts/jquery.flot.pie.js"></script><script src = "../Scripts/highcharts.js"></script><script src = "../Scripts/exporting.js"></script><script src = "../Scripts/export-data.js"></script><script src = "../Scripts/accessibility.js"></script><script src = "../Scripts/fusion/fusioncharts.accessibility.js"></script><script src = "../Scripts/fusion/fusioncharts.charts.js"></script><script src = "../Scripts/fusion/fusioncharts.js"></script><script src = "../Scripts/fusion/fusioncharts.theme.fusion.js"></script><script src = "../Scripts/fusion/fusioncharts.theme.accessibility.js"></script><script>var __basePath = './';</script><script src = "../Scripts/chart.js"></script><script src = "../Scripts/jquery.dataTables.min.js"></script><script type='text/javascript'>$(document).ready(function () { $('.table').DataTable(); $('#tabs').tabs();var ticksAU = ["SHOPIZER"];var data = [[[0, 59]]];var ticks = [[[0, "SHOPIZER"]]];var data1 = [[[0, 2]]];var ticks1 = [[[0, "SHOPIZER"]]];var dataAU = [2];
+                var ctx = document.getElementById("myChart").getContext("2d");
+                var labels = [];
+                var values = [];
+
+                for(var i=0;i<=labels;i++){
+                    labels.push("Label"+i)
+                    values.push(Math.random()*10)
+                }  
+debugger;
+                console.log(labels);
+                console.log(values);
+console.log(ticksAU);
+console.log(dataAU);
+              var chart = new Chart(ctx, {
+                
+                type: "bar",
+	
+                
+                data: {
+                  labels: ticksAU,
+                  datasets: [
+                    {         		  
+                      backgroundColor: "rgb(255, 99, 132)",
+                      label: "Unique Users",
+                      data: dataAU,
+                    },
+                  ],
+                },
+                                  
+                options: {                  
+		            scales: { 
+		            yAxes: [{
+		              scaleLabel: {
+			            display: true,
+			            labelString: 'No of Unique Users',	
+		              }
+		            }]
+		            }     		
+	            },
+              });
+
+
+              function getVals() {
+                
+                var parent = this.parentNode;
+                var slides = parent.getElementsByTagName("input");
+                var min = parseFloat(slides[0].value);
+                var max = parseFloat(slides[1].value);
+                
+                if (min > max) {
+                  var tmp = max;
+                  max = min;
+                  min = tmp;}
+
+                    var label = [];
+                    var value = [];
+
+                    label = JSON.parse(JSON.stringify(labels)).slice(min, max);
+
+                    
+                    value = JSON.parse(JSON.stringify(values)).slice(min, max);
+                    chart.data.labels = label;
+                    chart.data.datasets[0].data = value;
+                    chart.update();
+
+                var displayElement = parent.getElementsByClassName("rangeValues")[0];
+                displayElement.innerHTML = "Min : " + min + " Max : " + max;
+              }
+
+              
+              var sliderSections = document.getElementsByClassName("range-slider");
+              for (var x = 0; x < sliderSections.length; x++) {
+                var sliders = sliderSections[x].getElementsByTagName("input");
+                for (var y = 0; y < sliders.length; y++) {
+                  if (sliders[y].type === "range") {
+                    sliders[y].oninput = getVals;
+                    sliders[y].max=JSON.parse(JSON.stringify(labels)).length;
+                    
+                    sliders[y].oninput();
+                  }
+                }
+              } 
+              var piedata = [{ name:"SHOPIZER", y:59}];
+		        Highcharts.chart('container', {
+				chart: {
+					plotBackgroundColor: null,
+					plotBorderWidth: null,
+					plotShadow: false,
+					type: 'pie'
+					},
+					
+					tooltip: {
+						pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+					},
+					accessibility: {
+						point: {
+							valueSuffix: '%'
+						}
+					},
+					plotOptions: {
+						pie: {
+							allowPointSelect: true,
+							cursor: 'pointer',
+							dataLabels: {
+								enabled: true,
+								format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+							}
+						}
+					},
+					series: [{
+						name: 'Users',
+						colorByPoint: true,
+						data: piedata,
+					}]
+				});
+                $("#month").change(function() {
+                draw($('option:selected', this).val()); });draw($("#month").val());function draw(month){
+                      var options = {
+                       series: {
+                        bars: {
+                         show: true,
+                        }
+                       },
+                       bars: {
+                        align: "center",
+
+                                    barWidth: 0.5
+
+                                },
+                       xaxis:
+                                {
+                                axisLabel: "Application",
+                        axisLabelUseCanvas: true,
+                        axisLabelFontSizePixels: 12,
+                        axisLabelFontFamily: 'Verdana, Arial',
+                        axisLabelPadding: 20,
+                        ticks: ticks[month]
+
+                                },
+                       yaxis:
+                                {
+                                axisLabel: "No of Hits",
+                        axisLabelUseCanvas: true,
+                        axisLabelFontSizePixels: 12,
+                        axisLabelFontFamily: 'Verdana, Arial',
+                        axisLabelPadding: 3,
+
+                        tickFormatter: function(v, axis) {
+                                        return v;
+                                    }
+                                },
+                       legend:
+                                {
+                                noColumns: 1,
+                        labelBoxBorderColor: "#000000",
+                        position: "nw"
+
+
+                                },
+                       grid:
+                                {
+                                hoverable: true,
+                        borderWidth: 1,        
+                        backgroundColor: { colors: ["#ffffff", "#EDF5FF"] }
+                                }
+                            };
+                
+
+                      var dataset1 = [{ label: "Users in " + $("#month option:selected").text(), data: data[month] }];
+                $.plot($("#flot-placeholder"), dataset1, options); 
+                $("#flot-placeholder").UseTooltip();
+
+                      var dataset2 = [{ label: "Unique Users in " + $("#month option:selected").text(), data: data1[month] }];
+                $.plot($("#flot-placeholder1"), dataset2, options); 
+                $("#flot-placeholder1").UseTooltip();
+                
+                      }
+                      });
+
+          var previousPoint = null, previousLabel = null;
+	        $.fn.UseTooltip = function () {
+		        $(this).bind("plothover", function (event, pos, item) {
+
+                    if (item)
+                        {
+                            if ((previousLabel != item.series.label) || (previousPoint != item.dataIndex))
+                            {
+                                previousPoint = item.dataIndex;
+                                previousLabel = item.series.label;
+					        $("#tooltip").remove();
+
+                                var x = item.datapoint[0];
+                                var y = item.datapoint[1];
+
+                                var color = item.series.color;
+                                showTooltip(item.pageX,
+                                        item.pageY,
+                                        color,
+                                        "<strong>" + item.series.label + "</strong><br>" + item.series.xaxis.ticks[x].label + " : <strong>" + y + "</strong>");
+                            }
+                        }
+                        else
+                        {
+				        $("#tooltip").remove();
+                            previousPoint = null;
+                        }
+                    });
+                };
+
+                function showTooltip(x, y, color, contents)
+                {
+		        $('<div id="tooltip">' + contents + '</div>').css({
+                    position: 'absolute',
+			        display: 'none',
+			        top: y - 40,
+			        left: x - 120,
+			        border: '2px solid ' + color,
+			        padding: '3px',
+			        'font-size': '9px',
+			        'border-radius': '5px',
+			        'background-color': '#fff',
+			        'font-family': 'Verdana, Arial, Helvetica, Tahoma, sans-serif',
+			        opacity: 0.9
+                    
+                }).appendTo("body").fadeIn(200);
+                }
+            </script></head><body><div id="tabs"><ul><li><a href="#tabs-1">Charts</a></li>
+                        <li><a href="#tabs-2">Data by User</a></li><li><a href="#tabs-3">Data by Application</a></li>
+                        <li><a href="#tabs-4">Login Data</a></li><li><a href="#tabs-5">All Data</a></li></ul><div id="tabs-1"><br/><div style="margin-left:480px; font-weight:bold">Application Usage % - Overall</div><figure class="highcharts-figure">
+										<div id="container"></div></figure><br>
+                    <div id = "content">
+                        <div class="demo-container">
+                            <div style="margin-left:400px; font-weight:bold">No of Unique Users per Application - Overall</div><br/>
+				          
+                            <div style="width: 100%; overflow-x: auto; overflow-y: hidden">
+                            <div style="width: 1800px; height: 500px">
+                            <canvas id="myChart" height="300" width="0"></canvas>
+                            </div>
+                            </div>
+				            <br/>
+                            <div style="margin-left:520px; font-weight:bold">No of hits per Application</div><br/><select id='month'><option value="0">Jun 2023</option></select>
+                              <div id = "flot-placeholder" style="width:1300px;height:300px;margin:0 auto;"></div>
+                  <br/>
+                              <div style="margin-left:500px; font-weight:bold">No of unique hits per Application</div><br/>
+                              <div id = "flot-placeholder1" style="width:1300px;height:300px;margin:0 auto"></div>
+                  <br/>
+                 </div>
+                </div></div><div id="tabs-2"><h3></h3></br><table class="table table-striped table-bordered table-hover"><thead><tr><th>User</th><th>Application</th><th>Day</th><th>No Of Hits</th></tr></thead><tbody><tr><td>jkm@castsoftware.com</td><td>SHOPIZER</td><td>21-06-2023 03:30:00</td><td>24</td></tr><tr><td>jkm</td><td>SHOPIZER</td><td>21-06-2023 03:30:00</td><td>35</td></tr></tbody></table></div><div id="tabs-3"><h3></h3></br><table class="table table-striped table-bordered table-hover"><thead><tr><th>application</th><th>useremail</th><th>Day</th><th>No Of Hits</th></tr></thead><tbody><tr><td>SHOPIZER</td><td>jkm@castsoftware.com</td><td>21-06-2023 03:30:00</td><td>24</td></tr><tr><td>SHOPIZER</td><td>jkm</td><td>21-06-2023 03:30:00</td><td>35</td></tr></tbody></table></div><div id="tabs-4"><h3></h3></br><table class="table table-striped table-bordered table-hover"><thead><tr><th>User</th><th>Day</th><th>No Of Logins</th></tr></thead><tbody><tr><td>jkm</td><td>21-06-2023 03:30:00</td><td>1</td></tr><tr><td>jkm@castsoftware.com</td><td>21-06-2023 03:30:00</td><td>1</td></tr></tbody></table></div><div id="tabs-5"><h3></h3></br><table class="table table-striped table-bordered table-hover"><thead><tr><th>Application</th><th>User</th><th>Day</th><th>URL</th></tr></thead><tbody><tr><td>SHOPIZER</td><td>jkm</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/reports</td></tr><tr><td>SHOPIZER</td><td>jkm</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/aggregations</td></tr><tr><td>SHOPIZER</td><td>jkm</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/count</td></tr><tr><td>SHOPIZER</td><td>jkm</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/details</td></tr><tr><td>SHOPIZER</td><td>jkm</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/consoleInformation</td></tr><tr><td>SHOPIZER</td><td>jkm</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/levels</td></tr><tr><td>SHOPIZER</td><td>jkm</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/technology</td></tr><tr><td>SHOPIZER</td><td>jkm</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/overview/package/count</td></tr><tr><td>SHOPIZER</td><td>jkm</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/technologies/details</td></tr><tr><td>SHOPIZER</td><td>jkm</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/resources/aggregation/list</td></tr><tr><td>SHOPIZER</td><td>jkm</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/users/auth?admin=false</td></tr><tr><td>SHOPIZER</td><td>jkm</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/overview/count?type=all</td></tr><tr><td>SHOPIZER</td><td>jkm</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/dbobjects/count</td></tr><tr><td>SHOPIZER</td><td>jkm</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/cloud/insight/count</td></tr><tr><td>SHOPIZER</td><td>jkm</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/resources/document?viewType=Application&viewId=0&viewName=-3_CAST+Taxonomy</td></tr><tr><td>SHOPIZER</td><td>jkm</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/level/Level5?external=1&documents=true&graph=true</td></tr><tr><td>SHOPIZER</td><td>jkm</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/level/Level3?external=1&documents=true&graph=false</td></tr><tr><td>SHOPIZER</td><td>jkm</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/resources/document?viewType=Application&viewId=0&viewName=-3_CAST+Taxonomy</td></tr><tr><td>SHOPIZER</td><td>jkm</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/level/Level5?external=1&documents=true&graph=true</td></tr><tr><td>SHOPIZER</td><td>jkm</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/transaction/list?offset=0&limit=100&search=&withendpoints=true</td></tr><tr><td>SHOPIZER</td><td>jkm</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/resources/document?viewType=Transaction&viewId=305735&viewName=-3_CAST+Taxonomy</td></tr><tr><td>SHOPIZER</td><td>jkm</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/transaction/305735/level5/level5?external=1&isreducedgraph=true&mainobjectsonly=false</td></tr><tr><td>SHOPIZER</td><td>jkm</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/resources/document?viewType=Transaction&viewId=305735&viewName=-3_CAST+Taxonomy</td></tr><tr><td>SHOPIZER</td><td>jkm</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/transaction/305735/level5/objects?external=1&isreducedgraph=true&mainobjectsonly=false</td></tr><tr><td>SHOPIZER</td><td>jkm</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/resources/document?viewType=Transaction&viewId=305731&viewName=-3_CAST+Taxonomy</td></tr><tr><td>SHOPIZER</td><td>jkm</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/transaction/list?offset=0&limit=100&search=&withendpoints=true</td></tr><tr><td>SHOPIZER</td><td>jkm</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/transaction/305731/level5/objects?external=1&isreducedgraph=true&mainobjectsonly=false&shortestPath=false</td></tr><tr><td>SHOPIZER</td><td>jkm</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/dataGraph/list?offset=0&limit=100&search=</td></tr><tr><td>SHOPIZER</td><td>jkm</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/resources/document?viewType=Data+call+graph&viewId=305285&viewName=-3_CAST+Taxonomy</td></tr><tr><td>SHOPIZER</td><td>jkm</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/dataGraph/305285/level5/level5?external=1</td></tr><tr><td>SHOPIZER</td><td>jkm</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/resources/document?viewType=Data+call+graph&viewId=305291&viewName=-3_CAST+Taxonomy</td></tr><tr><td>SHOPIZER</td><td>jkm</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/dataGraph/list?offset=0&limit=100&search=</td></tr><tr><td>SHOPIZER</td><td>jkm</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/dataGraph/305291/level5/level5?external=1&shortestPath=false</td></tr><tr><td>SHOPIZER</td><td>jkm</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/resources/document?viewType=Data+call+graph&viewId=305291&viewName=-3_CAST+Taxonomy</td></tr><tr><td>SHOPIZER</td><td>jkm</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/dataGraph/305291/level5/objects?external=1</td></tr><tr><td>SHOPIZER</td><td>jkm@castsoftware.com</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/reports</td></tr><tr><td>SHOPIZER</td><td>jkm@castsoftware.com</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/users/auth?admin=false</td></tr><tr><td>SHOPIZER</td><td>jkm@castsoftware.com</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/aggregations</td></tr><tr><td>SHOPIZER</td><td>jkm@castsoftware.com</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/details</td></tr><tr><td>SHOPIZER</td><td>jkm@castsoftware.com</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/technologies/details</td></tr><tr><td>SHOPIZER</td><td>jkm@castsoftware.com</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/consoleInformation</td></tr><tr><td>SHOPIZER</td><td>jkm@castsoftware.com</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/levels</td></tr><tr><td>SHOPIZER</td><td>jkm@castsoftware.com</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/count</td></tr><tr><td>SHOPIZER</td><td>jkm@castsoftware.com</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/overview/package/count</td></tr><tr><td>SHOPIZER</td><td>jkm@castsoftware.com</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/cloud/insight/count</td></tr><tr><td>SHOPIZER</td><td>jkm@castsoftware.com</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/overview/count?type=all</td></tr><tr><td>SHOPIZER</td><td>jkm@castsoftware.com</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/technology</td></tr><tr><td>SHOPIZER</td><td>jkm@castsoftware.com</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/dbobjects/count</td></tr><tr><td>SHOPIZER</td><td>jkm@castsoftware.com</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/resources/aggregation/list</td></tr><tr><td>SHOPIZER</td><td>jkm@castsoftware.com</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/resources/document?viewType=Application&viewId=0&viewName=-3_CAST+Taxonomy</td></tr><tr><td>SHOPIZER</td><td>jkm@castsoftware.com</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/level/Level5?external=1&documents=true&graph=true</td></tr><tr><td>SHOPIZER</td><td>jkm@castsoftware.com</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/transaction/list?offset=0&limit=100&search=&withendpoints=true</td></tr><tr><td>SHOPIZER</td><td>jkm@castsoftware.com</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/resources/document?viewType=Transaction&viewId=305735&viewName=-3_CAST+Taxonomy</td></tr><tr><td>SHOPIZER</td><td>jkm@castsoftware.com</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/transaction/305735/level5/level5?external=1&isreducedgraph=true&mainobjectsonly=false</td></tr><tr><td>SHOPIZER</td><td>jkm@castsoftware.com</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/resources/document?viewType=Transaction&viewId=305735&viewName=-3_CAST+Taxonomy</td></tr><tr><td>SHOPIZER</td><td>jkm@castsoftware.com</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/transaction/305735/level5/objects?external=1&isreducedgraph=true&mainobjectsonly=false</td></tr><tr><td>SHOPIZER</td><td>jkm@castsoftware.com</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/resources/document?viewType=Transaction&viewId=305712&viewName=-3_CAST+Taxonomy</td></tr><tr><td>SHOPIZER</td><td>jkm@castsoftware.com</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/transaction/list?offset=0&limit=100&search=&withendpoints=true</td></tr><tr><td>SHOPIZER</td><td>jkm@castsoftware.com</td><td>21-06-2023 03:30:00</td><td>http://localhost:9000/domains/neo4j/apps/SHOPIZER/transaction/305712/level5/objects?external=1&isreducedgraph=true&mainobjectsonly=false&shortestPath=false</td></tr></tbody></table></div></div></body></html>
